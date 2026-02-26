@@ -1,0 +1,175 @@
+/* ── RESET ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f2f5;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* ── CONTAINER ── */
+.container {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.4rem;
+  color: #1a1a2e;
+  margin-bottom: 1.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── DISPLAY ── */
+.display {
+  background: #1a1a2e;
+  color: #fff;
+  border-radius: 10px;
+  padding: 1.8rem 1rem;
+  font-size: 3.2rem;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.02em;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.display span {
+  min-width: 2ch;
+  text-align: center;
+}
+
+.colon, .dot {
+  min-width: auto !important;
+  color: #7c5cfc;
+  padding: 0 2px;
+}
+
+#milliseconds {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.6);
+  align-self: flex-end;
+  padding-bottom: 4px;
+}
+
+/* ── CONTROLS ── */
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 7px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease, opacity 0.2s;
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn:not(:disabled):hover {
+  transform: translateY(-2px);
+}
+
+.btn-start  { background: #28a745; color: #fff; }
+.btn-start:not(:disabled):hover  { background: #34c759; }
+
+.btn-pause  { background: #f7c948; color: #333; }
+.btn-pause:not(:disabled):hover  { background: #ffd84d; }
+
+.btn-reset  { background: #dc3545; color: #fff; }
+.btn-reset:not(:disabled):hover  { background: #e4505e; }
+
+.btn-lap    { background: #7c5cfc; color: #fff; }
+.btn-lap:not(:disabled):hover    { background: #9b7ffe; }
+
+/* ── LAP SECTION ── */
+.lap-section {
+  text-align: left;
+  border-top: 1px solid #eee;
+  padding-top: 1.2rem;
+  display: none; /* shown via JS when laps exist */
+}
+
+.lap-section.visible {
+  display: block;
+}
+
+.lap-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+#lapList {
+  list-style: none;
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+#lapList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f9f9;
+  border-radius: 6px;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.9rem;
+  color: #333;
+  border-left: 3px solid #7c5cfc;
+  animation: slideIn 0.2s ease;
+}
+
+#lapList li span.lap-time {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  color: #1a1a2e;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 400px) {
+  .display {
+    font-size: 2.4rem;
+    padding: 1.4rem 0.5rem;
+  }
+  #milliseconds {
+    font-size: 1.5rem;
+  }
+}
